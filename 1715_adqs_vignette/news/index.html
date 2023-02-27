@@ -44,6 +44,8 @@
     <a class="dropdown-item" href="../articles/higher_order.html">Higher Order Functions</a>
     <a class="dropdown-item" href="../articles/queries_dataset.html">Queries Dataset Documentation</a>
     <a class="dropdown-item" href="../articles/lab_grading.html">Lab Grading</a>
+    <a class="dropdown-item" href="../articles/hys_law.html">Hy's Law Implementation</a>
+    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
   </div>
 </li>
 <li class="nav-item dropdown">
@@ -81,9 +83,11 @@
 <h2 class="pkg-version" data-toc-text="0.10.0" id="admiral-0100">admiral 0.10.0<a class="anchor" aria-label="anchor" href="#admiral-0100"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-10-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-10-0"></a></h3>
-<ul><li><p>New function <code><a href="../reference/consolidate_metadata.html">consolidate_metadata()</a></code> for consolidating multiple meta datasets into a single one (<a href="https://github.com/pharmaverse/admiral/issues/1479" class="external-link">#1479</a>)</p></li>
+<ul><li><p>Using testthat3e (testthat 3rd edition) for unit testing. This is stricter in that messages must be addressed and deprecated functions throw errors. (<a href="https://github.com/pharmaverse/admiral/issues/1754" class="external-link">#1754</a>)</p></li>
+<li><p>New function <code><a href="../reference/consolidate_metadata.html">consolidate_metadata()</a></code> for consolidating multiple meta datasets into a single one (<a href="https://github.com/pharmaverse/admiral/issues/1479" class="external-link">#1479</a>)</p></li>
 <li><p>New function <code><a href="../reference/compute_scale.html">compute_scale()</a></code> for computing the average of a vector and transforming the result from a source to a target range. (<a href="https://github.com/pharmaverse/admiral/issues/1692" class="external-link">#1692</a>)</p></li>
 <li><p>New ADPC template script available <code>ad_adpc.R</code> which creates PK Concentration Analysis Dataset (<a href="https://github.com/pharmaverse/admiral/issues/849" class="external-link">#849</a>). This script includes formatting suitable for Non-Compartmental Analysis (ADNCA) (<a href="https://github.com/pharmaverse/admiral/issues/851" class="external-link">#851</a>)</p></li>
+<li><p>New function <code><a href="../reference/derive_expected_records.html">derive_expected_records()</a></code> for adding expected records (<a href="https://github.com/pharmaverse/admiral/issues/1729" class="external-link">#1729</a>)</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="updates-of-existing-functions-0-10-0">Updates of Existing Functions<a class="anchor" aria-label="anchor" href="#updates-of-existing-functions-0-10-0"></a></h3>
@@ -132,6 +136,7 @@
 <div class="section level3">
 <h3 id="documentation-0-10-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-10-0"></a></h3>
 <ul><li><p>New vignette “Creating a PK NCA ADaM (ADPC/ADNCA)” (<a href="https://github.com/pharmaverse/admiral/issues/1639" class="external-link">#1639</a>)</p></li>
+<li><p>New vignette “Hy’s Law Implementation” (<a href="https://github.com/pharmaverse/admiral/issues/1637" class="external-link">#1637</a>)</p></li>
 <li><p>New vignette “Creating Questionnaire ADaMs” (<a href="https://github.com/pharmaverse/admiral/issues/1715" class="external-link">#1715</a>)</p></li>
 <li><p><code>ADLB</code> metadata data set called <code>atoxgr_criteria_ctcv5</code> updated to remove unit check for <code>HYPERURICEMIA</code> as grade criteria based on <code>ANRHI</code> only. This metadata holds criteria for lab grading based on <a href="https://ctep.cancer.gov/protocoldevelopment/electronic_applications/ctc.htm" class="external-link">Common Terminology Criteria for Adverse Events (CTCAE) v5.0</a> (<a href="https://github.com/pharmaverse/admiral/issues/1650" class="external-link">#1650</a>)</p></li>
 <li><p>The expected value for the <code>derivation</code> argument of <code><a href="../reference/restrict_derivation.html">restrict_derivation()</a></code>, <code><a href="../reference/slice_derivation.html">slice_derivation()</a></code>, and <code><a href="../reference/call_derivation.html">call_derivation()</a></code> is described now. (<a href="https://github.com/pharmaverse/admiral/issues/1698" class="external-link">#1698</a>)</p></li>

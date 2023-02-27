@@ -55,6 +55,9 @@
     <loc>https://pharmaverse.github.io/admiral/articles/how-to-get-started.html</loc>
   </url>
   <url>
+    <loc>https://pharmaverse.github.io/admiral/articles/hys_law.html</loc>
+  </url>
+  <url>
     <loc>https://pharmaverse.github.io/admiral/articles/imputation.html</loc>
   </url>
   <url>
@@ -104,6 +107,9 @@
   </url>
   <url>
     <loc>https://pharmaverse.github.io/admiral/reference/admiral-package.html</loc>
+  </url>
+  <url>
+    <loc>https://pharmaverse.github.io/admiral/reference/admiral_adlb.html</loc>
   </url>
   <url>
     <loc>https://pharmaverse.github.io/admiral/reference/admiral_adsl.html</loc>
@@ -215,6 +221,9 @@
   </url>
   <url>
     <loc>https://pharmaverse.github.io/admiral/reference/derive_derived_param.html</loc>
+  </url>
+  <url>
+    <loc>https://pharmaverse.github.io/admiral/reference/derive_expected_records.html</loc>
   </url>
   <url>
     <loc>https://pharmaverse.github.io/admiral/reference/derive_extreme_records.html</loc>
