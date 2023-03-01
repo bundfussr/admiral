@@ -226,6 +226,9 @@
     <loc>https://pharmaverse.github.io/admiral/reference/derive_expected_records.html</loc>
   </url>
   <url>
+    <loc>https://pharmaverse.github.io/admiral/reference/derive_extreme_event.html</loc>
+  </url>
+  <url>
     <loc>https://pharmaverse.github.io/admiral/reference/derive_extreme_records.html</loc>
   </url>
   <url>
@@ -448,10 +451,16 @@
     <loc>https://pharmaverse.github.io/admiral/reference/dtm_level.html</loc>
   </url>
   <url>
+    <loc>https://pharmaverse.github.io/admiral/reference/event.html</loc>
+  </url>
+  <url>
     <loc>https://pharmaverse.github.io/admiral/reference/event_source.html</loc>
   </url>
   <url>
     <loc>https://pharmaverse.github.io/admiral/reference/ex_single.html</loc>
+  </url>
+  <url>
+    <loc>https://pharmaverse.github.io/admiral/reference/example_qs.html</loc>
   </url>
   <url>
     <loc>https://pharmaverse.github.io/admiral/reference/extend_source_datasets.html</loc>

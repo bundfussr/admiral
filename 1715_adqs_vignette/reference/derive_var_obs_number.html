@@ -174,25 +174,24 @@ order specified for the <code>order</code> parameter and the mode specified for 
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">admiral_vs</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">VSTESTCD</span>, <span class="va">VISITNUM</span>, <span class="va">VSTPTNUM</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">VSTESTCD</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HEIGHT"</span>, <span class="st">"WEIGHT"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu">derive_var_obs_number</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    by_vars <span class="op">=</span> <span class="fu"><a href="reexport-exprs.html">exprs</a></span><span class="op">(</span><span class="va">USUBJID</span>, <span class="va">VSTESTCD</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    order <span class="op">=</span> <span class="fu"><a href="reexport-exprs.html">exprs</a></span><span class="op">(</span><span class="va">VISITNUM</span>, <span class="va">VSTPTNUM</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    order <span class="op">=</span> <span class="fu"><a href="reexport-exprs.html">exprs</a></span><span class="op">(</span><span class="va">VISITNUM</span>, <span class="fu"><a href="reexport-desc.html">desc</a></span><span class="op">(</span><span class="va">VSTPTNUM</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,304 x 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 29,643 x 5</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    USUBJID     VSTESTCD VISITNUM VSTPTNUM  ASEQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>       </span><span style="color: #949494;font-style: italic;">&lt;chr&gt;</span><span>       </span><span style="color: #949494;font-style: italic;">&lt;dbl&gt;</span><span>    </span><span style="color: #949494;font-style: italic;">&lt;dbl&gt;</span><span> </span><span style="color: #949494;font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span><span> 01-701-1015 HEIGHT          1       </span><span style="color: #BB0000;">NA</span><span>     1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span><span> 01-701-1015 WEIGHT          1       </span><span style="color: #BB0000;">NA</span><span>     1</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span><span> 01-701-1015 WEIGHT          3       </span><span style="color: #BB0000;">NA</span><span>     2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span><span> 01-701-1015 WEIGHT          4       </span><span style="color: #BB0000;">NA</span><span>     3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span><span> 01-701-1015 WEIGHT          5       </span><span style="color: #BB0000;">NA</span><span>     4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span><span> 01-701-1015 WEIGHT          7       </span><span style="color: #BB0000;">NA</span><span>     5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span><span> 01-701-1015 WEIGHT          8       </span><span style="color: #BB0000;">NA</span><span>     6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span><span> 01-701-1015 WEIGHT          9       </span><span style="color: #BB0000;">NA</span><span>     7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span><span> 01-701-1015 WEIGHT         10       </span><span style="color: #BB0000;">NA</span><span>     8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span><span> 01-701-1015 WEIGHT         11       </span><span style="color: #BB0000;">NA</span><span>     9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2,294 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span><span> 01-701-1015 DIABP         1        817     1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span><span> 01-701-1015 DIABP         1        816     2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span><span> 01-701-1015 DIABP         1        815     3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span><span> 01-701-1015 DIABP         2        817     4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span><span> 01-701-1015 DIABP         2        816     5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span><span> 01-701-1015 DIABP         2        815     6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span><span> 01-701-1015 DIABP         3        817     7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span><span> 01-701-1015 DIABP         3        816     8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span><span> 01-701-1015 DIABP         3        815     9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span><span> 01-701-1015 DIABP         3.5      817    10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 29,633 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

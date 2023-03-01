@@ -88,6 +88,7 @@
 <li><p>New function <code><a href="../reference/compute_scale.html">compute_scale()</a></code> for computing the average of a vector and transforming the result from a source to a target range. (<a href="https://github.com/pharmaverse/admiral/issues/1692" class="external-link">#1692</a>)</p></li>
 <li><p>New ADPC template script available <code>ad_adpc.R</code> which creates PK Concentration Analysis Dataset (<a href="https://github.com/pharmaverse/admiral/issues/849" class="external-link">#849</a>). This script includes formatting suitable for Non-Compartmental Analysis (ADNCA) (<a href="https://github.com/pharmaverse/admiral/issues/851" class="external-link">#851</a>)</p></li>
 <li><p>New function <code><a href="../reference/derive_expected_records.html">derive_expected_records()</a></code> for adding expected records (<a href="https://github.com/pharmaverse/admiral/issues/1729" class="external-link">#1729</a>)</p></li>
+<li><p>New function <code><a href="../reference/derive_extreme_event.html">derive_extreme_event()</a></code> for adding the worst or best observation for each by group as new records (<a href="https://github.com/pharmaverse/admiral/issues/1755" class="external-link">#1755</a>)</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="updates-of-existing-functions-0-10-0">Updates of Existing Functions<a class="anchor" aria-label="anchor" href="#updates-of-existing-functions-0-10-0"></a></h3>
@@ -104,6 +105,7 @@
 </li>
 <li><p>Function <code><a href="../reference/derive_param_tte.html">derive_param_tte()</a></code> has been updated such that only observations are added for subjects who have both an event or censoring and an observation in <code>dataset_adsl</code> (<a href="https://github.com/pharmaverse/admiral/issues/1576" class="external-link">#1576</a>).</p></li>
 <li><p>Function <code><a href="../reference/derive_var_disposition_status.html">derive_var_disposition_status()</a></code> has been deprecated, please use <code><a href="../reference/derive_var_merged_cat.html">derive_var_merged_cat()</a></code> instead (<a href="https://github.com/pharmaverse/admiral/issues/1681" class="external-link">#1681</a>).</p></li>
+<li><p>Function <code><a href="../reference/derive_vars_disposition_reason.html">derive_vars_disposition_reason()</a></code> has been deprecated, in favor of <code><a href="../reference/derive_vars_merged.html">derive_vars_merged()</a></code>(<a href="https://github.com/pharmaverse/admiral/issues/1683" class="external-link">#1683</a>)</p></li>
 <li>
 <p>The following functions have been deprecated from previous <a href="https://pharmaverse.github.io/admiral/">admiral</a> versions using the next phase of the deprecation process: (<a href="https://github.com/pharmaverse/admiral/issues/1712" class="external-link">#1712</a>)</p>
 <ul><li><code><a href="../reference/derive_derived_param.html">derive_derived_param()</a></code></li>
@@ -130,17 +132,19 @@
 <li>
 <code>date_imputation</code>, <code>time_imputation</code> and <code>preserve</code> parameters from <code><a href="../reference/date_source.html">date_source()</a></code> function</li>
 <li>
-<code>filter</code> parameter from <code><a href="../reference/derive_var_extreme_flag.html">derive_var_extreme_flag()</a></code> and <code><a href="../reference/derive_var_worst_flag.html">derive_var_worst_flag()</a></code> functions</li>
+<code>filter</code> parameter from <code><a href="../reference/derive_var_extreme_flag.html">derive_var_extreme_flag()</a></code>
+</li>
 </ul></li>
+<li><p><code>ADLB</code> metadata data set called <code>atoxgr_criteria_ctcv5</code> updated to remove unit check for <code>HYPERURICEMIA</code> as grade criteria based on <code>ANRHI</code> only. This metadata holds criteria for lab grading based on <a href="https://ctep.cancer.gov/protocoldevelopment/electronic_applications/ctc.htm" class="external-link">Common Terminology Criteria for Adverse Events (CTCAE) v5.0</a> (<a href="https://github.com/pharmaverse/admiral/issues/1650" class="external-link">#1650</a>)</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-0-10-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-10-0"></a></h3>
 <ul><li><p>New vignette “Creating a PK NCA ADaM (ADPC/ADNCA)” (<a href="https://github.com/pharmaverse/admiral/issues/1639" class="external-link">#1639</a>)</p></li>
 <li><p>New vignette “Hy’s Law Implementation” (<a href="https://github.com/pharmaverse/admiral/issues/1637" class="external-link">#1637</a>)</p></li>
 <li><p>New vignette “Creating Questionnaire ADaMs” (<a href="https://github.com/pharmaverse/admiral/issues/1715" class="external-link">#1715</a>)</p></li>
-<li><p><code>ADLB</code> metadata data set called <code>atoxgr_criteria_ctcv5</code> updated to remove unit check for <code>HYPERURICEMIA</code> as grade criteria based on <code>ANRHI</code> only. This metadata holds criteria for lab grading based on <a href="https://ctep.cancer.gov/protocoldevelopment/electronic_applications/ctc.htm" class="external-link">Common Terminology Criteria for Adverse Events (CTCAE) v5.0</a> (<a href="https://github.com/pharmaverse/admiral/issues/1650" class="external-link">#1650</a>)</p></li>
 <li><p>The expected value for the <code>derivation</code> argument of <code><a href="../reference/restrict_derivation.html">restrict_derivation()</a></code>, <code><a href="../reference/slice_derivation.html">slice_derivation()</a></code>, and <code><a href="../reference/call_derivation.html">call_derivation()</a></code> is described now. (<a href="https://github.com/pharmaverse/admiral/issues/1698" class="external-link">#1698</a>)</p></li>
 <li><p>Removed authors from function documentation, as we will now only be tracking an overall list of authors for admiral. (<a href="https://github.com/pharmaverse/admiral/issues/1673" class="external-link">#1673</a>)</p></li>
+<li><p>Added an imputation example for <code>create_single_source_dataset()</code> in function documentation (<a href="https://github.com/pharmaverse/admiral/issues/1408" class="external-link">#1408</a>)(<a href="https://github.com/pharmaverse/admiral/issues/1760" class="external-link">#1760</a>)</p></li>
 </ul></div>
 </div>
     <div class="section level2">
