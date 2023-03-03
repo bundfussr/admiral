@@ -41,6 +41,7 @@ the function can derive a parameter for the first disease progression."><meta pr
     <a class="dropdown-item" href="../articles/bds_exposure.html">Creating a BDS Exposure ADaM</a>
     <a class="dropdown-item" href="../articles/bds_tte.html">Creating a BDS Time-to-Event ADaM</a>
     <a class="dropdown-item" href="../articles/questionnaires.html">Creating Questionnaire ADaMs</a>
+    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
     <h6 class="dropdown-header" data-toc-skip>Advanced User Guides</h6>
     <a class="dropdown-item" href="../articles/imputation.html">Date and Time Imputation</a>
     <a class="dropdown-item" href="../articles/visits_periods.html">Visit and Period Variables</a>
@@ -49,7 +50,6 @@ the function can derive a parameter for the first disease progression."><meta pr
     <a class="dropdown-item" href="../articles/queries_dataset.html">Queries Dataset Documentation</a>
     <a class="dropdown-item" href="../articles/lab_grading.html">Lab Grading</a>
     <a class="dropdown-item" href="../articles/hys_law.html">Hy's Law Implementation</a>
-    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
   </div>
 </li>
 <li class="nav-item dropdown">
@@ -98,7 +98,7 @@ the function can derive a parameter for the first disease progression.</p>
 <span>  <span class="va">dataset_source</span>,</span>
 <span>  <span class="va">filter_source</span>,</span>
 <span>  order <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  new_var <span class="op">=</span> <span class="va">AVALC</span>,</span>
+<span>  new_var <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  true_value <span class="op">=</span> <span class="st">"Y"</span>,</span>
 <span>  false_value <span class="op">=</span> <span class="st">"N"</span>,</span>
 <span>  mode <span class="op">=</span> <span class="st">"first"</span>,</span>
@@ -210,8 +210,8 @@ event occurred</p>
 source dataset is selected. This is depending on <code>mode</code>, (with respect to <code>order</code>,
 if applicable) where the event condition (<code>filter_source</code> parameter) is fulfilled.</p></li>
 <li><p>For each observation in <code>dataset_adsl</code> a new observation is created. For
-subjects with event <code>new_var</code> is set to <code>true_var</code>. For all other
-subjects <code>new_var</code> is set to <code>false_var</code>.
+subjects with event <code>new_var</code> is set to <code>true_value</code>. For all other
+subjects <code>new_var</code> is set to <code>false_value</code>.
 For subjects with event all variables from <code>dataset_source</code> are kept. For
 subjects without event all variables which are in both <code>dataset_adsl</code> and
 <code>dataset_source</code> are kept.</p></li>

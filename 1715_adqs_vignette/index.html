@@ -71,6 +71,7 @@
     <a class="dropdown-item" href="articles/bds_exposure.html">Creating a BDS Exposure ADaM</a>
     <a class="dropdown-item" href="articles/bds_tte.html">Creating a BDS Time-to-Event ADaM</a>
     <a class="dropdown-item" href="articles/questionnaires.html">Creating Questionnaire ADaMs</a>
+    <a class="dropdown-item" href="articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
     <h6 class="dropdown-header" data-toc-skip>Advanced User Guides</h6>
     <a class="dropdown-item" href="articles/imputation.html">Date and Time Imputation</a>
     <a class="dropdown-item" href="articles/visits_periods.html">Visit and Period Variables</a>
@@ -79,7 +80,6 @@
     <a class="dropdown-item" href="articles/queries_dataset.html">Queries Dataset Documentation</a>
     <a class="dropdown-item" href="articles/lab_grading.html">Lab Grading</a>
     <a class="dropdown-item" href="articles/hys_law.html">Hy's Law Implementation</a>
-    <a class="dropdown-item" href="articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
   </div>
 </li>
 <li class="nav-item dropdown">
@@ -143,61 +143,50 @@
 </h2>
 <p><a href="https://pharmaverse.github.io/admiral/">admiral</a> releases are targeted for the first Monday of the last month of each quarter. Pull Requests will be frozen the week before a release. The <code>admiral</code> family has several downstream and upstream dependencies and so this release shall be done in three Phases:</p>
 <ul>
-<li>Phase 1 release is for <a href="https://pharmaverse.github.io/admiraldev/main/">admiraldev</a> and <code>{admiral.test}</code>, which feed into all <code>admiral</code> packages</li>
-<li>Phase 2 release is only for core <a href="https://pharmaverse.github.io/admiral/">admiral</a>
-</li>
-<li>Phase 3 release is extension packages, e.g. <code>{admiralonco}</code>
+<li>Phase 1 release is for <a href="https://pharmaverse.github.io/admiraldev/main/">admiraldev</a>, <code>{admiral.test}</code>, and <a href="https://pharmaverse.github.io/admiral/">admiral</a> core</li>
+<li>Phase 2 release is extension packages, e.g. <code>{admiralonco}</code>, <code>admiralophtha</code>
 </li>
 </ul>
 <table class="table">
-<colgroup>
-<col width="17%">
-<col width="27%">
-<col width="27%">
-<col width="27%">
-</colgroup>
 <thead><tr class="header">
 <th>Release Schedule</th>
 <th>Phase 1- Date and Packages</th>
 <th>Phase 2- Date and Packages</th>
-<th>Phase 3- Date and Packages</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Q1-2023</td>
-<td>February 27th</td>
-<td>March 6th</td>
-<td>March 13th</td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="https://pharmaverse.github.io/admiraldev/main/">admiraldev</a></td>
-<td><a href="https://pharmaverse.github.io/admiral/">admiral</a></td>
-<td><code>{admiralonco}</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code>{admiral.test}</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
 <td>Q2-2023</td>
-<td>May 29th</td>
 <td>June 5th</td>
 <td>June 12th</td>
 </tr>
+<tr class="even">
+<td></td>
+<td>
+<a href="https://pharmaverse.github.io/admiraldev/main/">admiraldev</a> <code>{admiral.test}</code>
+</td>
+<td><code>{admiralonco}</code></td>
+</tr>
 <tr class="odd">
 <td></td>
-<td><a href="https://pharmaverse.github.io/admiraldev/main/">admiraldev</a></td>
 <td><a href="https://pharmaverse.github.io/admiral/">admiral</a></td>
+<td><code>{admiralophtha}</code></td>
+</tr>
+<tr class="even">
+<td>Q3-2023</td>
+<td>September 4th</td>
+<td>September 11th</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>
+<a href="https://pharmaverse.github.io/admiraldev/main/">admiraldev</a> <code>{admiral.test}</code>
+</td>
 <td><code>{admiralonco}</code></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code>{admiral.test}</code></td>
-<td></td>
-<td></td>
+<td><a href="https://pharmaverse.github.io/admiral/">admiral</a></td>
+<td><code>{admiralophtha}</code></td>
 </tr>
 </tbody>
 </table>
@@ -254,7 +243,7 @@
 <ul>
 <li><p>We try not to ever design single functions that could achieve numerous very different derivations. For example if you as a user pick up a function with &gt;10 different arguments then chances are it is going to be difficult to understand if this function could be applied for your specific need. The intention is that arguments/parameters can influence how the output of a function is calculated, but not change the purpose of the function.</p></li>
 <li><p>We try to combine similar tasks and algorithms into one function where applicable to reduce the amount of repetitive functions with similar algorithms and to group together similar functionality to increase usability (e.g. one study day calculation rather than a function per variable).</p></li>
-<li><p>We strive to design functions that are not too general and trying to fulfil multiple, complex purposes.</p></li>
+<li><p>We strive to design functions that are not too general and trying to fulfill multiple, complex purposes.</p></li>
 <li><p>Functions should not allow expressions as arguments that are used as code snippets in function calls.</p></li>
 <li><p>We recommend to avoid copy and paste of complex computational algorithms or repetitive code like checks and advise to wrap them into a function. However we would also like to avoid multi-layered functional nesting, so this needs to be considered carefully to keep the nesting of 3-4 functions an exception rather than the rule.</p></li>
 </ul>
@@ -287,13 +276,13 @@
 <h2 id="references-and-documentation">References and Documentation<a class="anchor" aria-label="anchor" href="#references-and-documentation"></a>
 </h2>
 <ul>
-<li>Please go to <a href="https://pharmaverse.github.io/admiral/articles/admiral.html">Get Started</a> section to start using <a href="https://pharmaverse.github.io/admiral/">admiral</a>
+<li>Please go to <a href="https://pharmaverse.github.io/admiral/cran-release/articles/admiral.html">Get Started</a> section to start using <a href="https://pharmaverse.github.io/admiral/">admiral</a>
 </li>
 <li>Please see the <a href="https://www.youtube.com/channel/UCxQFEv8HNqM01DXzdQLCy6Q" class="external-link">pharmaverse YouTube channel</a> for videos related to <a href="https://pharmaverse.github.io/admiral/">admiral</a>.</li>
 <li>Please see the <a href="https://pharmaverse.github.io/admiraldev/main/articles/programming_strategy.html">Programming Strategy</a> to understand how functions are created</li>
-<li>Please see the <a href="https://pharmaverse.github.io/admiral/articles/faq.html">FAQ</a> for the most frequent questions</li>
+<li>Please see the <a href="https://pharmaverse.github.io/admiral/cran-release/articles/faq.html">FAQ</a> for the most frequent questions</li>
 <li>Please see the <a href="https://pharmaverse.github.io/admiral/articles/contribution_model.html">Contribution Model</a> for how to get involved with making contributions</li>
-<li>Please see <a href="https://pharmaverse.github.io/admiral/articles/faq.html#why-do-we-use-a-certain-r-version-and-package-versions-for-development">FAQ: R and Package Versions</a> for why we develop with certain R and package versions.</li>
+<li>Please see <a href="https://pharmaverse.github.io/admiral/cran-release/articles/faq.html#why-do-we-use-a-certain-r-version-and-package-versions-for-development">FAQ: R and Package Versions</a> for why we develop with certain R and package versions.</li>
 </ul>
 </div>
 <div class="section level2">

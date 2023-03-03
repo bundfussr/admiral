@@ -37,6 +37,7 @@
     <a class="dropdown-item" href="../articles/bds_exposure.html">Creating a BDS Exposure ADaM</a>
     <a class="dropdown-item" href="../articles/bds_tte.html">Creating a BDS Time-to-Event ADaM</a>
     <a class="dropdown-item" href="../articles/questionnaires.html">Creating Questionnaire ADaMs</a>
+    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
     <h6 class="dropdown-header" data-toc-skip>Advanced User Guides</h6>
     <a class="dropdown-item" href="../articles/imputation.html">Date and Time Imputation</a>
     <a class="dropdown-item" href="../articles/visits_periods.html">Visit and Period Variables</a>
@@ -45,7 +46,6 @@
     <a class="dropdown-item" href="../articles/queries_dataset.html">Queries Dataset Documentation</a>
     <a class="dropdown-item" href="../articles/lab_grading.html">Lab Grading</a>
     <a class="dropdown-item" href="../articles/hys_law.html">Hy's Law Implementation</a>
-    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
   </div>
 </li>
 <li class="nav-item dropdown">
@@ -83,7 +83,7 @@
 <h2 class="pkg-version" data-toc-text="0.10.0" id="admiral-0100">admiral 0.10.0<a class="anchor" aria-label="anchor" href="#admiral-0100"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-10-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-10-0"></a></h3>
-<ul><li><p>Using testthat3e (testthat 3rd edition) for unit testing. This is stricter in that messages must be addressed and deprecated functions throw errors. (<a href="https://github.com/pharmaverse/admiral/issues/1754" class="external-link">#1754</a>)</p></li>
+<ul><li><p>Using <a href="https://testthat.r-lib.org" class="external-link">testthat</a> 3rd edition for unit testing. This is stricter in that messages must be addressed and deprecated functions throw errors. (<a href="https://github.com/pharmaverse/admiral/issues/1754" class="external-link">#1754</a>)</p></li>
 <li><p>New function <code><a href="../reference/consolidate_metadata.html">consolidate_metadata()</a></code> for consolidating multiple meta datasets into a single one (<a href="https://github.com/pharmaverse/admiral/issues/1479" class="external-link">#1479</a>)</p></li>
 <li><p>New function <code><a href="../reference/compute_scale.html">compute_scale()</a></code> for computing the average of a vector and transforming the result from a source to a target range. (<a href="https://github.com/pharmaverse/admiral/issues/1692" class="external-link">#1692</a>)</p></li>
 <li><p>New ADPC template script available <code>ad_adpc.R</code> which creates PK Concentration Analysis Dataset (<a href="https://github.com/pharmaverse/admiral/issues/849" class="external-link">#849</a>). This script includes formatting suitable for Non-Compartmental Analysis (ADNCA) (<a href="https://github.com/pharmaverse/admiral/issues/851" class="external-link">#851</a>)</p></li>
@@ -96,6 +96,9 @@
 <li><p>The function <code><a href="../reference/create_single_dose_dataset.html">create_single_dose_dataset()</a></code> adds support for expanding relative nominal time (e.g. NFRLT) used in Pharmacokinetic (PK) analyses. The new parameter <code>nominal_time</code> defaults as <code>NULL</code> and does not change the normal operation of the function. If a <code>nominal_time</code> is specified such as NFRLT (Nominal Relative Time from First Dose) then the nominal time is incremented by the interval specified in <code>EXDOSFRQ</code> for example for “QD” records the NFRLT is incremented by 24 hours, e.g. 0, 24, 48…(<a href="https://github.com/pharmaverse/admiral/issues/1640" class="external-link">#1640</a>).</p></li>
 <li><p><code><a href="../reference/create_single_dose_dataset.html">create_single_dose_dataset()</a></code> is also updated for values of <code>EXDOSFRQ</code> with units in days but expected values less than 24 hours, such as “BID”, “TID”, and “QID”. Previously these values of <code>EXDOSFRQ</code> may result in duplicate records where the day values are incremented but the time values are not (<a href="https://github.com/pharmaverse/admiral/issues/1643" class="external-link">#1643</a>)</p></li>
 <li><p>The function <code><a href="../reference/derive_var_confirmation_flag.html">derive_var_confirmation_flag()</a></code> and <code><a href="../reference/filter_confirmation.html">filter_confirmation()</a></code> gained the <code>tmp_obs_nr_var</code> argument. It helps flagging or selecting consecutive observations or the first or last observation in a by group. (<a href="https://github.com/pharmaverse/admiral/issues/1724" class="external-link">#1724</a>)</p></li>
+<li><p>The units “min” and “sec” are added as valid values of <code>out_unit</code> in <code><a href="../reference/compute_duration.html">compute_duration()</a></code> and <code><a href="../reference/derive_vars_duration.html">derive_vars_duration()</a></code> (<a href="https://github.com/pharmaverse/admiral/issues/1647" class="external-link">#1647</a>).</p></li>
+<li><p>The function <code><a href="../reference/derive_vars_query.html">derive_vars_query()</a></code> now includes a consistency check for <code>QUERY_SCOPE</code> and <code>QUERY_SCOPE_NUM</code> values. (<a href="https://github.com/pharmaverse/admiral/issues/652" class="external-link">#652</a>)</p></li>
+<li><p>Argument <code>new_var</code> in <code><a href="../reference/derive_param_extreme_event.html">derive_param_extreme_event()</a></code> is made optional. (<a href="https://github.com/pharmaverse/admiral/issues/1630" class="external-link">#1630</a>)</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="breaking-changes-0-10-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-10-0"></a></h3>
@@ -105,6 +108,7 @@
 </li>
 <li><p>Function <code><a href="../reference/derive_param_tte.html">derive_param_tte()</a></code> has been updated such that only observations are added for subjects who have both an event or censoring and an observation in <code>dataset_adsl</code> (<a href="https://github.com/pharmaverse/admiral/issues/1576" class="external-link">#1576</a>).</p></li>
 <li><p>Function <code><a href="../reference/derive_var_disposition_status.html">derive_var_disposition_status()</a></code> has been deprecated, please use <code><a href="../reference/derive_var_merged_cat.html">derive_var_merged_cat()</a></code> instead (<a href="https://github.com/pharmaverse/admiral/issues/1681" class="external-link">#1681</a>).</p></li>
+<li><p>Function <code><a href="../reference/derive_var_worst_flag.html">derive_var_worst_flag()</a></code> has been deprecated, in favor of <code><a href="../reference/slice_derivation.html">slice_derivation()</a></code>/<code><a href="../reference/derive_var_extreme_flag.html">derive_var_extreme_flag()</a></code> (<a href="https://github.com/pharmaverse/admiral/issues/1682" class="external-link">#1682</a>)</p></li>
 <li><p>Function <code><a href="../reference/derive_vars_disposition_reason.html">derive_vars_disposition_reason()</a></code> has been deprecated, in favor of <code><a href="../reference/derive_vars_merged.html">derive_vars_merged()</a></code>(<a href="https://github.com/pharmaverse/admiral/issues/1683" class="external-link">#1683</a>)</p></li>
 <li>
 <p>The following functions have been deprecated from previous <a href="https://pharmaverse.github.io/admiral/">admiral</a> versions using the next phase of the deprecation process: (<a href="https://github.com/pharmaverse/admiral/issues/1712" class="external-link">#1712</a>)</p>
@@ -145,7 +149,11 @@
 <li><p>The expected value for the <code>derivation</code> argument of <code><a href="../reference/restrict_derivation.html">restrict_derivation()</a></code>, <code><a href="../reference/slice_derivation.html">slice_derivation()</a></code>, and <code><a href="../reference/call_derivation.html">call_derivation()</a></code> is described now. (<a href="https://github.com/pharmaverse/admiral/issues/1698" class="external-link">#1698</a>)</p></li>
 <li><p>Removed authors from function documentation, as we will now only be tracking an overall list of authors for admiral. (<a href="https://github.com/pharmaverse/admiral/issues/1673" class="external-link">#1673</a>)</p></li>
 <li><p>Added an imputation example for <code>create_single_source_dataset()</code> in function documentation (<a href="https://github.com/pharmaverse/admiral/issues/1408" class="external-link">#1408</a>)(<a href="https://github.com/pharmaverse/admiral/issues/1760" class="external-link">#1760</a>)</p></li>
+<li><p>Updates to examples for <code><a href="../reference/derive_var_age_years.html">derive_var_age_years()</a></code> and <code><a href="../reference/derive_vars_duration.html">derive_vars_duration()</a></code> (<a href="https://github.com/pharmaverse/admiral/issues/1620" class="external-link">#1620</a>, <a href="https://github.com/pharmaverse/admiral/issues/1634" class="external-link">#1634</a>)</p></li>
 </ul></div>
+<div class="section level3">
+<h3 id="various-0-10-0">Various<a class="anchor" aria-label="anchor" href="#various-0-10-0"></a></h3>
+<ul><li>Functions <code><a href="../reference/derive_vars_dtm.html">derive_vars_dtm()</a></code> and <code><a href="../reference/derive_vars_dt.html">derive_vars_dt()</a></code> had a bug pertaining to imputations associated with <code>NA</code> values that has now been fixed (<a href="https://github.com/pharmaverse/admiral/issues/1646" class="external-link">#1646</a>)</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.1" id="admiral-091">admiral 0.9.1<a class="anchor" aria-label="anchor" href="#admiral-091"></a></h2><p class="text-muted">CRAN release: 2022-12-23</p>
@@ -519,7 +527,7 @@
 <div class="section level4">
 <h4 id="bds-0-4-0">BDS<a class="anchor" aria-label="anchor" href="#bds-0-4-0"></a></h4>
 <ul><li><p><code><a href="../reference/derive_param_tte.html">derive_param_tte()</a></code> derives time-to-event-parameters (<a href="https://github.com/pharmaverse/admiral/issues/546" class="external-link">#546</a>)</p></li>
-<li><p>For common time-to-event endpoints <a href="https://pharmaverse.github.io/admiral/reference/index.html#section-pre-defined-time-to-event-sources">event and censoring source objects</a> are provided (<a href="https://github.com/pharmaverse/admiral/issues/612" class="external-link">#612</a>)</p></li>
+<li><p>For common time-to-event endpoints <a href="https://pharmaverse.github.io/admiral/cran-release/reference/index.html#section-pre-defined-time-to-event-sources">event and censoring source objects</a> are provided (<a href="https://github.com/pharmaverse/admiral/issues/612" class="external-link">#612</a>)</p></li>
 </ul></div>
 <div class="section level4">
 <h4 id="developer-0-4-0">Developer<a class="anchor" aria-label="anchor" href="#developer-0-4-0"></a></h4>
@@ -541,12 +549,12 @@
 <div class="section level3">
 <h3 id="bug-fixes-0-4-0">Bug Fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-4-0"></a></h3>
 <ul><li><p><code><a href="../reference/derive_vars_dtm.html">derive_vars_dtm()</a></code> no longer shifts the time of the input <code>--DTC</code> variable (<a href="https://github.com/pharmaverse/admiral/issues/436" class="external-link">#436</a>)</p></li>
-<li><p><code><a href="../reference/derive_vars_dtm.html">derive_vars_dtm()</a></code> Change the min_dates with max_dates in the lapply statement when computing max_dates (<a href="https://github.com/pharmaverse/admiral/issues/687" class="external-link">#687</a>)</p></li>
+<li><p><code><a href="../reference/derive_vars_dtm.html">derive_vars_dtm()</a></code> Change the min_dates with max_dates in the <code>lapply</code> statement when computing max_dates (<a href="https://github.com/pharmaverse/admiral/issues/687" class="external-link">#687</a>)</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-0-4-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-4-0"></a></h3>
-<ul><li><p>New vignette <a href="https://pharmaverse.github.io/admiral/articles/bds_tte.html">Creating a BDS Time-to-Event ADaM</a> (<a href="https://github.com/pharmaverse/admiral/issues/549" class="external-link">#549</a>)</p></li>
-<li><p>New vignette <a href="https://pharmaverse.github.io/admiral/articles/queries_dataset.html">Queries Dataset Documentation</a> (<a href="https://github.com/pharmaverse/admiral/issues/561" class="external-link">#561</a>)</p></li>
+<ul><li><p>New vignette <a href="https://pharmaverse.github.io/admiral/cran-release/articles/bds_tte.html">Creating a BDS Time-to-Event ADaM</a> (<a href="https://github.com/pharmaverse/admiral/issues/549" class="external-link">#549</a>)</p></li>
+<li><p>New vignette <a href="https://pharmaverse.github.io/admiral/cran-release/articles/queries_dataset.html">Queries Dataset Documentation</a> (<a href="https://github.com/pharmaverse/admiral/issues/561" class="external-link">#561</a>)</p></li>
 <li><p>New vignette <a href="https://pharmaverse.github.io/admiraldev/main/articles/writing_vignettes.html">Writing Vignettes</a> (<a href="https://github.com/pharmaverse/admiral/issues/334" class="external-link">#334</a>)</p></li>
 <li><p>New vignette <a href="https://pharmaverse.github.io/admiraldev/main/articles/pr_review_guidance.html">Pull Request Review Guidance</a> (<a href="https://github.com/pharmaverse/admiral/issues/554" class="external-link">#554</a>)</p></li>
 <li><p>A section on handling missing values when working with {admiral} has been added to the “Get Started” vignette (<a href="https://github.com/pharmaverse/admiral/issues/577" class="external-link">#577</a>)</p></li>
@@ -700,10 +708,10 @@
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-0-2-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-2-0"></a></h3>
-<ul><li><p><a href="https://pharmaverse.github.io/admiral/articles/faq.html">Frequently Asked Questions</a></p></li>
-<li><p><a href="https://pharmaverse.github.io/admiral/articles/adsl.html">Creating ADSL</a></p></li>
-<li><p><a href="https://pharmaverse.github.io/admiral/articles/bds_finding.html">Creating a BDS Finding ADaM</a></p></li>
-<li><p><a href="https://pharmaverse.github.io/admiral/articles/occds.html">Creating an OCCDS ADaM</a></p></li>
+<ul><li><p><a href="https://pharmaverse.github.io/admiral/cran-release/articles/faq.html">Frequently Asked Questions</a></p></li>
+<li><p><a href="https://pharmaverse.github.io/admiral/cran-release/articles/adsl.html">Creating ADSL</a></p></li>
+<li><p><a href="https://pharmaverse.github.io/admiral/cran-release/articles/bds_finding.html">Creating a BDS Finding ADaM</a></p></li>
+<li><p><a href="https://pharmaverse.github.io/admiral/cran-release/articles/occds.html">Creating an OCCDS ADaM</a></p></li>
 </ul></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

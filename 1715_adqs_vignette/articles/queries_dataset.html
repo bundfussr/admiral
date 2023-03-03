@@ -61,6 +61,7 @@
     <a class="dropdown-item" href="../articles/bds_exposure.html">Creating a BDS Exposure ADaM</a>
     <a class="dropdown-item" href="../articles/bds_tte.html">Creating a BDS Time-to-Event ADaM</a>
     <a class="dropdown-item" href="../articles/questionnaires.html">Creating Questionnaire ADaMs</a>
+    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
     <h6 class="dropdown-header" data-toc-skip>Advanced User Guides</h6>
     <a class="dropdown-item" href="../articles/imputation.html">Date and Time Imputation</a>
     <a class="dropdown-item" href="../articles/visits_periods.html">Visit and Period Variables</a>
@@ -69,7 +70,6 @@
     <a class="dropdown-item" href="../articles/queries_dataset.html">Queries Dataset Documentation</a>
     <a class="dropdown-item" href="../articles/lab_grading.html">Lab Grading</a>
     <a class="dropdown-item" href="../articles/hys_law.html">Hy's Law Implementation</a>
-    <a class="dropdown-item" href="../articles/pk_adnca.html">Creating a PK NCA ADaM (ADPC/ADNCA)</a>
   </div>
 </li>
 <li class="nav-item dropdown">
@@ -121,7 +121,7 @@
 </h2>
 <p>To support the safety analysis, it is quite common to define specific grouping of events. One of the most common ways is to group events or medications by a specific medical concept such as a Standard MedDRA Queries (SMQs) or WHO-Drug Standardized Drug Groupings (SDGs).</p>
 <p>To help with the derivation of these variables, the {admiral} function <code><a href="../reference/derive_vars_query.html">derive_vars_query()</a></code> can be used. This function takes as input the dataset (<code>dataset</code>) where the grouping must occur (e.g <code>ADAE</code>) and a dataset containing the required information to perform the derivation of the grouping variables (<code>dataset_queries</code>).</p>
-<p>The dataset passed to the <code>dataset_queries</code> argument of the <code><a href="../reference/derive_vars_query.html">derive_vars_query()</a></code> function can be created by the <code><a href="../reference/create_query_data.html">create_query_data()</a></code> function. For SMQs and SDGs company-specific functions for accessing the SMQ and SDG database need to be passed to the <code><a href="../reference/create_query_data.html">create_query_data()</a></code> function (see the description of the <code>get_smq_fun</code> and <code>get_sdq_fun</code> parameter for details).</p>
+<p>The dataset passed to the <code>dataset_queries</code> argument of the <code><a href="../reference/derive_vars_query.html">derive_vars_query()</a></code> function can be created by the <code><a href="../reference/create_query_data.html">create_query_data()</a></code> function. For SMQs and SDGs company-specific functions for accessing the SMQ and SDG database need to be passed to the <code><a href="../reference/create_query_data.html">create_query_data()</a></code> function (see the description of the <code>get_terms_fun</code> argument for details).</p>
 <p>This vignette describes the expected structure and content of the dataset passed to the <code>dataset_queries</code> argument in the <code><a href="../reference/derive_vars_query.html">derive_vars_query()</a></code> function.</p>
 </div>
 <div class="section level2">
